@@ -1,6 +1,12 @@
 import React, { useState, useMemo, useCallback, useRef } from "react";
 import styled from "styled-components";
 
+/**
+ * COMPONENTS
+ */
+
+import Controls from "./Controls";
+
 const WIDTH = 50;
 const HEIGHT = 50;
 
@@ -93,16 +99,15 @@ const Grid = () => {
 
     return (
         <>
-        <Start onClick={() => {
-            setRunning(!running);
-            runningRef.current = true;
-            runSimulation();
-            }}>
-                Start
-        </Start>
-        <Grid2D>
-            {renderGrid}
-        </Grid2D>
+            <Controls 
+                setRunning={setRunning}
+                runSimulation={runSimulation} 
+                running={running} 
+                runningRef={runningRef}
+            />
+            <Grid2D>
+                {renderGrid}
+            </Grid2D>
         </>
     )
 }

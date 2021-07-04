@@ -10,6 +10,7 @@ const AppWrapper = styled.div`
   height: 100vh;
   background: #4169e1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
