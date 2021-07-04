@@ -18,7 +18,7 @@ const Btn = styled.button`
 
 const Button = ({ label, onClick, active, setActive, isRunning }) => {
 
-    return <Btn 
+    return <Btn
             disabled={isRunning}
             active={active} 
             onClick={() => {
