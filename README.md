@@ -7,4 +7,4 @@
 
 ### Check also the vanilla Javascript version I made with pure HTML/CSS and Canvas API!
 
-- [Canvas Game Of Life](https://github.com/edXmO/game-of-life);
+- [Canvas Game Of Life](https://github.com/edXmO/game-of-life)

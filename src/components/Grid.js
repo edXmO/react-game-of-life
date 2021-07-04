@@ -18,22 +18,25 @@ const COLS = HEIGHT / RES;
 
 const Grid2D = styled.div`
     display: grid;
-    background-color: #000000;
     height: ${HEIGHT}rem;
     width: ${WIDTH}rem;
     grid-template-rows: repeat(${ROWS}, 1fr);
     grid-template-columns: repeat(${COLS}, 1fr);
+    background: rgba( 45, 49, 58, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5.0px );
+    -webkit-backdrop-filter: blur( 5.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 `;
 
 const Cell = styled.div`
-    background-color: ${({alive}) => alive === 1 ? "pink" : "black"};
+    background-color: ${({alive}) => alive === 1 ? "pink" : "transparent"};
     height: ${RES}rem;
     width: ${RES}rem;
     border: ${({running}) => !running ? `0.5px   solid #FFF` : undefined}
 `
 
-const Start = styled.button`
-`
 
 const Grid = () => {
 
