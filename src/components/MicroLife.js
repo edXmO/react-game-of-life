@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 
 const WIDTH = 9;
@@ -18,36 +18,43 @@ const MicroGrid = styled.div`
 `
 
 const Cell = styled.div`
-    background-color: ${({alive}) => alive === true ? "black" : "transparent"};
+    background-color: ${({alive}) => !alive ? "rgba( 45, 49, 58, 0.65 )" : "black"};
     height: ${RES}rem;
     width: ${RES}rem;
-    border: 0.5px solid #000;
+    border: 0.5px solid #fff;
 `
 
 const MicroLife = () => {
-
-    const [ grid, setGrid ] = useState(() => {
+    const [grid, setGrid] = useState(() => {
         const rows = [];
         for(let i = 0; i < ROWS; i++){
-            rows.push(Array.from(Array(COLS).fill(Math.floor(Math.random()))));
+            rows.push(Array.from(Array(COLS).fill(Math.floor(Math.random() * 2))));
         }
+        return rows;
     });
 
-    const runMicroGrid = () => {
+    const runMicroGrid = useCallback(() => {
         let newGrid = [];
         for(let i = 0; i < ROWS; i++){
-            rows.push(Array.from(Array(COLS).fill(Math.floor(Math.random()))));
+            newGrid.push(Array.from(Array(COLS).fill(Math.floor(Math.random() * 2))));
         }
 
-        setGrid[newGrid];
+        setGrid(newGrid);
 
-        setTimeout(() => runMicroGrid(), 1000)
+        setTimeout(() => runMicroGrid(), 1000);
+    }, []);
 
-    };
+    useEffect(() => {
+        runMicroGrid();
+    }, []);
+
+    const renderGrid = useMemo(() => {
+        return grid.map((row, i) => row.map((col, j) => <Cell key={`${i}-${j}`} alive={col}/>))
+    }, [grid]);
 
     return (
         <MicroGrid>
-            {grid.map((row, i) => row.map((col, i) => <Cell key={`${i}-${j}`} alive={col}/>))}
+            {renderGrid}
         </MicroGrid>
     )
 }

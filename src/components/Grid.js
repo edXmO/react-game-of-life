@@ -16,6 +16,11 @@ const ROWS = WIDTH / RES;
 const COLS = HEIGHT / RES;
 
 
+const GridWrapper = styled.div`
+    display:flex;
+    flex-direction: column;
+`
+
 const Grid2D = styled.div`
     display: grid;
     height: ${HEIGHT}rem;
@@ -26,7 +31,6 @@ const Grid2D = styled.div`
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 5.0px );
     -webkit-backdrop-filter: blur( 5.0px );
-    border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 `;
 
@@ -101,7 +105,7 @@ const Grid = () => {
     }, [grid, running]);
 
     return (
-        <>
+        <GridWrapper>
             <Controls 
                 setRunning={setRunning}
                 runSimulation={runSimulation} 
@@ -111,7 +115,7 @@ const Grid = () => {
             <Grid2D>
                 {renderGrid}
             </Grid2D>
-        </>
+        </GridWrapper>
     )
 }
 
