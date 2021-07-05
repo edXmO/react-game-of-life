@@ -41,7 +41,6 @@ const Cell = styled.div`
     border: ${({running}) => !running ? `0.5px   solid #FFF` : undefined}
 `
 
-
 const Grid = () => {
 
     const [running, setRunning] = useState(false);
@@ -107,6 +106,8 @@ const Grid = () => {
     return (
         <GridWrapper>
             <Controls 
+                rows={ROWS}
+                resetGame={setGrid}
                 setRunning={setRunning}
                 runSimulation={runSimulation} 
                 running={running} 

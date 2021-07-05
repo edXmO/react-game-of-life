@@ -21,34 +21,37 @@ const ControlsWrapper = styled.div`
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 `
 
-const Controls = ({setRunning, runSimulation, running, runningRef}) => {
+const Controls = ({setRunning, runSimulation, running, runningRef, resetGame, rows}) => {
 
     const [active, setActive] = useState();
 
     return (
         <ControlsWrapper>
             <Button 
-                // isRunning={running}
                 active={active}
                 setActive={setActive}
                 onClick={() => {
-                console.log("running")
-                setRunning(!running);
-                runningRef.current = true;
-                runSimulation();
+                if(runningRef.current === true){
+                    return runningRef.current = false;;
+                } else if(!runningRef.current){
+                    runningRef.current = true;
+                    runSimulation();
+                }
             }} 
-            label={"Start"}
+            label={runningRef.current ? "Stop" : "Start     "}
             />
             <Button 
-                // isRunning={!running}
-                active={false} 
-                setActive={setActive}
-                onClick={() => console.log("")} label={"Stop"} />
-            <Button 
-                // isRunning={!running}
                 active={false}
                 setActive={setActive}
-                onClick={() => console.log("start")} label={"Reset"} />
+                onClick={() => {
+                    runningRef.current = false;
+                    const newGrid = [];
+                    for(let i = 0; i < rows; i++){ 
+                        newGrid.push(new Array(rows).fill(0));
+                    }
+                    resetGame(newGrid);           
+                }} 
+                label={"Reset"} />
         </ControlsWrapper>
     );
 }

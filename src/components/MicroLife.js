@@ -4,7 +4,7 @@ import styled from "styled-components";
 const WIDTH = 9;
 const HEIGHT = 9;
 
-const RES = 3
+const RES = 1;
 
 const ROWS = WIDTH / RES;
 const COLS = HEIGHT / RES;
@@ -25,6 +25,7 @@ const Cell = styled.div`
 `
 
 const MicroLife = () => {
+
     const [grid, setGrid] = useState(() => {
         const rows = [];
         for(let i = 0; i < ROWS; i++){
@@ -33,7 +34,9 @@ const MicroLife = () => {
         return rows;
     });
 
+
     const runMicroGrid = useCallback(() => {
+
         let newGrid = [];
         for(let i = 0; i < ROWS; i++){
             newGrid.push(Array.from(Array(COLS).fill(Math.floor(Math.random() * 2))));
@@ -47,6 +50,7 @@ const MicroLife = () => {
     useEffect(() => {
         runMicroGrid();
     }, []);
+
 
     const renderGrid = useMemo(() => {
         return grid.map((row, i) => row.map((col, j) => <Cell key={`${i}-${j}`} alive={col}/>))
