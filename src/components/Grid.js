@@ -54,7 +54,7 @@ const Grid = () => {
 
     const editGrid = (grid, row, col, val = 1) => {
         const newGrid = [...grid];
-        newGrid[row][col] = val ?? !grid[row][col];
+        newGrid[row][col] = val;
         return newGrid;
     }
 
@@ -93,7 +93,7 @@ const Grid = () => {
         setGrid(newGrid);
 
         setTimeout(() => runSimulation(), 500);
-    }, [grid])
+    }, [grid]);
 
     const renderGrid = useMemo(() => {
         return grid.map((row, i) => row.map((col, j) => <Cell running={running} key={`${i}-${j}`} alive={col} onClick={() => {

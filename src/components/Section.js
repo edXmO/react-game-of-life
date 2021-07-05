@@ -5,10 +5,11 @@ import styled from "styled-components";
  * COMPONENTS
  */
 import Heading from "./Heading";
+import InfoSection from "./InfoSection";
 
 const SectionWrapper = styled.section`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 40rem;
     height: 90vh;
     background: rgba( 45, 49, 58, 0.25 );
@@ -23,6 +24,7 @@ const Section = () => {
     return (
         <SectionWrapper>
             <Heading />
+            <InfoSection />
         </SectionWrapper>
     )
 }

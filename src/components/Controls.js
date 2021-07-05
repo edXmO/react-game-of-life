@@ -21,7 +21,7 @@ const ControlsWrapper = styled.div`
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 `
 
-const Controls = ({setRunning, runSimulation, running, runningRef, resetGame, rows}) => {
+const Controls = ({runSimulation, runningRef, resetGame, rows}) => {
 
     const [active, setActive] = useState();
 
@@ -38,7 +38,7 @@ const Controls = ({setRunning, runSimulation, running, runningRef, resetGame, ro
                     runSimulation();
                 }
             }} 
-            label={runningRef.current ? "Stop" : "Start     "}
+            label={runningRef.current ? "Stop" : "Start"}
             />
             <Button 
                 active={false}

@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+
+/**
+ * COMPONENTS
+ */
+
 import MicroLife from "./MicroLife";
 
 const GameLogoWrapper = styled.div`
@@ -25,6 +30,7 @@ const HeadingLogo = styled.h1`
     color: #ffffff;
 `
 const SubHeadingLogo = styled.h4`
+    width: 100%;
     margin-top: auto;
     align-self: flex-end;
     padding: 0 2rem 0 0;
@@ -32,6 +38,24 @@ const SubHeadingLogo = styled.h4`
     font-style: italic;
     font-weight: bold;
     color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
+const InfoButton = styled.div`
+    border: 0.3rem solid #ffffff;  
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
 `
 
 const Logo = () => {
@@ -39,7 +63,10 @@ const Logo = () => {
         <GameLogoWrapper>
             <Headings>
                 <HeadingLogo>Game of Life</HeadingLogo>
-                <SubHeadingLogo>By John Horton Conway</ SubHeadingLogo>
+                <SubHeadingLogo>
+                    <InfoButton>i</InfoButton>
+                    By John Horton Conway
+                </ SubHeadingLogo>
             </Headings>
             <MicroLife />
         </ GameLogoWrapper >
