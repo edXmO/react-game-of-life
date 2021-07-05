@@ -4,7 +4,6 @@ import styled from "styled-components";
 /**
  * COMPONENTS
  */
-
 import Controls from "./Controls";
 
 const WIDTH = 50;
@@ -14,7 +13,6 @@ const RES = 2;
 
 const ROWS = WIDTH / RES;
 const COLS = HEIGHT / RES;
-
 
 const GridWrapper = styled.div`
     display:flex;
@@ -97,7 +95,7 @@ const Grid = () => {
 
     const renderGrid = useMemo(() => {
         return grid.map((row, i) => row.map((col, j) => <Cell running={running} key={`${i}-${j}`} alive={col} onClick={() => {
-            if(running) return;
+            if(runningRef.current) return;
             let newGrid = editGrid(grid, i, j);
             setGrid(newGrid);
         }} />));

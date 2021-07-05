@@ -13,7 +13,11 @@ const Btn = styled.button`
     text-decoration: none;
     border-radius: 10px;
     border: 0;
-    background-color: ${({active}) => active === true ? "white" : "transparent"}
+    background: transparent;
+    transition: background 300ms ease-in;
+    &:active, &:focus{
+        background-color: white;       
+    }
 `
 
 const Button = ({ label, onClick, active, setActive, isRunning }) => {
